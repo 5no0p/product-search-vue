@@ -48,10 +48,7 @@ const uniqueCategoryProducts = computed(() => {
   <div class="app-container flex flex-col items-center justify-center">
     <h1>Product Search</h1>
     <div class="search-filter flex gap-2">
-      <div class="search-bar flex">
-        <input v-model="searchQuery" placeholder="Search products by name" class="border border-r-0 border-blue-300  px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-        <button class="bg-blue-500 text-white px-2">Search</button>
-      </div>
+      <input v-model="searchQuery" placeholder="Search products by name" class="border border-blue-300  px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
       <select v-model="categorySelected" class="block w-full border py-1 px-4 pe-9 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded tracking-wider">
         <option value="">All Categories</option>
         <option v-for="product in uniqueCategoryProducts" :value="product.category">{{ product.category }}</option>
