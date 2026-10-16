@@ -45,13 +45,15 @@ const uniqueCategoryProducts = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div class="app-container flex flex-col items-center justify-center">
     <h1>Product Search</h1>
-    <input v-model="searchQuery" placeholder="Search products by name" />
-    <select v-model="categorySelected">
-      <option value="">All Categories</option>
-      <option v-for="product in uniqueCategoryProducts" value="product.category">{{ product.category }}</option>
-    </select>
+    <div class="search-filter flex gap-2">
+      <input v-model="searchQuery" placeholder="Search products by name" class="border border-gray-300 rounded px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <select v-model="categorySelected" class="block w-full border py-1 px-4 pe-9 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded tracking-wider">
+        <option value="">All Categories</option>
+        <option v-for="product in uniqueCategoryProducts" value="product.category">{{ product.category }}</option>
+      </select>
+    </div>
   </div>
 </template>
 
