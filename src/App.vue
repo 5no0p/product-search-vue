@@ -48,11 +48,29 @@ const uniqueCategoryProducts = computed(() => {
   <div class="app-container flex flex-col items-center justify-center">
     <h1>Product Search</h1>
     <div class="search-filter flex gap-2">
-      <input v-model="searchQuery" placeholder="Search products by name" class="border border-gray-300 rounded px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <div class="search-bar flex">
+        <input v-model="searchQuery" placeholder="Search products by name" class="border border-r-0 border-blue-300  px-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        <button class="bg-blue-500 text-white px-2">Search</button>
+      </div>
       <select v-model="categorySelected" class="block w-full border py-1 px-4 pe-9 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded tracking-wider">
         <option value="">All Categories</option>
-        <option v-for="product in uniqueCategoryProducts" value="product.category">{{ product.category }}</option>
+        <option v-for="product in uniqueCategoryProducts" :value="product.category">{{ product.category }}</option>
       </select>
+    </div>
+    <div class="products-list w-full mt-4">
+      <ul class="flex flex-col mx-96">
+        <li v-for="product in filteredProducts" :key="product.name" 
+        class="inline-flex gap-x-2 py-3 px-4  border first:rounded-t-2xl last:rounded-b-2xl">
+        <div class="flex justify-between items-center w-full">
+          <span>
+              {{ product.name }}
+            </span>
+            <span class="text-gray-400">
+              ({{ product.category }})
+            </span>
+        </div>  
+        </li>
+      </ul>
     </div>
   </div>
 </template>
